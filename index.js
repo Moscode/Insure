@@ -4,11 +4,16 @@ const menu = document.querySelector(".menu");
 const body = document.body;
 
 
-function resetingHambugerMenu(menuType) {
+function resetingHambugerMenuStyle(menuType) {
   const mediaQuery = window.matchMedia("(min-width: 768px)");
-  if (mediaQuery.matches) {
-    menuType.style.display = "none";
+
+  function handleScreenResize(e) {
+    if (e.matches) {
+      menuType.style.display = "none";
+    }
   }
+  mediaQuery.addEventListener("resize", handleScreenResize);
+  handleScreenResize(mediaQuery);
 }
 
 function open() {
@@ -16,7 +21,7 @@ function open() {
   openMenu.style.display = "none";
   closeMenu.style.display = "inline-block";
   body.style.position = "fixed";
-  resetingHambugerMenu(closeMenu);
+  resetingHambugerMenuStyle(closeMenu);
 }
 
 function close() {
@@ -24,7 +29,7 @@ function close() {
   closeMenu.style.display = "none";
   openMenu.style.display = "inline-block";
   body.style.position = "relative";
-  resetingHambugerMenu(openMenu);
+  resetingHambugerMenuStyle(openMenu);
 }
 
 closeMenu.addEventListener("click", close);
