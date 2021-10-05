@@ -15,7 +15,6 @@ function close() {
   closeMenu.style.display = "none";
   openMenu.style.display = "inline-block";
   body.style.position = "relative";
-  // resetingHambugerMenu(openMenu);
 }
 
 closeMenu.addEventListener("click", close);
